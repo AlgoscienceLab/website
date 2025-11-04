@@ -30,7 +30,7 @@ const Software = () => {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '../Resources/Software/AWaveViewer_Professional_Setup.exe';
+    link.href = '/Resources/Software/AWaveViewer_Professional_Setup.exe';
     link.download = 'AWaveViewer_Professional_Setup.exe';
     link.click();
   };
@@ -130,7 +130,7 @@ const Software = () => {
               signal debugging workflows, and tips for effective verification.
             </p>
             <a 
-              href="../Resources/pdf/Algo Science Lab.pdf" 
+              href="/Resources/pdf/Algo Science Lab.pdf" 
               target="_blank" 
               rel="noopener noreferrer"
               className="btn-outline-gold"
