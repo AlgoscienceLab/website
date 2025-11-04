@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-weight: 700;
+  font-style: italic;
 }
 
 :root {
@@ -33,7 +35,7 @@ body {
   overflow-x: hidden;
   line-height: 1.65;
   position: relative;
-  font-weight: 700;
+  font-weight: 900;
   font-style: italic;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -83,7 +85,7 @@ body::after {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Times New Roman', Times, serif;
-  font-weight: 700;
+  font-weight: 900;
   font-style: italic;
   letter-spacing: -0.3px;
   line-height: 1.3;
@@ -92,6 +94,8 @@ h1, h2, h3, h4, h5, h6 {
 a {
   text-decoration: none;
   color: inherit;
+  font-weight: 700;
+  font-style: italic;
 }
 
 /* Glassmorphic Elements */
@@ -271,7 +275,7 @@ a {
   padding: 14px 32px;
   border: none;
   font-family: 'Times New Roman', Times, serif;
-  font-weight: 700;
+  font-weight: 900;
   font-style: italic;
   font-size: 15px;
   cursor: pointer;
@@ -299,7 +303,7 @@ a {
   padding: 12px 30px;
   border: 2px solid var(--gold);
   font-family: 'Times New Roman', Times, serif;
-  font-weight: 700;
+  font-weight: 900;
   font-style: italic;
   font-size: 16px;
   cursor: pointer;
