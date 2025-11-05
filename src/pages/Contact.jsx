@@ -142,7 +142,7 @@ const Contact = () => {
 
             <form 
               className="contact-form glass fade-in-up" 
-              action="https://formsubmit.co/shahrearhossain@gmail.com"
+              action="https://formsubmit.co/sshahrearhossain@gmail.com"
               method="POST"
             >
               {/* FormSubmit.co Configuration */}
