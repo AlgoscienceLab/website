@@ -248,10 +248,85 @@ const Contact = () => {
       {/* Map Section */}
       <section className="map-section">
         <div className="container">
-          <div className="map-container glass fade-in-up">
-            <div className="map-placeholder">
-              <FaMapMarkerAlt className="map-icon" />
-              <p>Map Integration</p>
+          <div className="section-header fade-in">
+            <h2 className="section-title">
+              Find <span className="gold-text">Our Location</span>
+            </h2>
+            <p className="section-subtitle">
+              Visit our office in Halishahar, Chittagong, Bangladesh
+            </p>
+          </div>
+          
+          <div className="map-wrapper fade-in-up">
+            <div className="map-container glass">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58892.95676457253!2d91.77062648530276!3d22.37348487431639!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd899db5df547%3A0xf011a0b2e17c814e!2sHalishahar%2C%20Chittagong!5e0!3m2!1sen!2sbd!4v1699200000000!5m2!1sen!2sbd"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Algo Science Lab Location - Halishahar, Chittagong"
+              ></iframe>
+            </div>
+            
+            <div className="location-details glass">
+              <div className="location-info">
+                <div className="location-item">
+                  <FaMapMarkerAlt className="location-icon" />
+                  <div className="location-text">
+                    <h4>Address</h4>
+                    <p>Halishahar, Chittagong 4217</p>
+                    <p>Bangladesh</p>
+                  </div>
+                </div>
+                
+                <div className="location-item">
+                  <FaPhone className="location-icon" />
+                  <div className="location-text">
+                    <h4>Phone</h4>
+                    <p>+880 1859 492439</p>
+                    <p>WhatsApp Available</p>
+                  </div>
+                </div>
+                
+                <div className="location-item">
+                  <FaEnvelope className="location-icon" />
+                  <div className="location-text">
+                    <h4>Email</h4>
+                    <p>algoscienceacademy@gmail.com</p>
+                    <p>sshahrearhossain@gmail.com</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="office-hours">
+                <h4>Office Hours</h4>
+                <div className="hours-list">
+                  <div className="hours-item">
+                    <span>Monday - Friday</span>
+                    <span className="gold-text">9:00 AM - 6:00 PM</span>
+                  </div>
+                  <div className="hours-item">
+                    <span>Saturday</span>
+                    <span className="gold-text">10:00 AM - 4:00 PM</span>
+                  </div>
+                  <div className="hours-item">
+                    <span>Sunday</span>
+                    <span className="gold-text">Closed</span>
+                  </div>
+                </div>
+              </div>
+              
+              <a 
+                href="https://www.google.com/maps/place/Halishahar,+Chittagong/@22.3734849,91.7706265,13z/data=!3m1!4b1!4m6!3m5!1s0x30acd899db5df547:0xf011a0b2e17c814e!8m2!3d22.3692727!4d91.7979753!16s%2Fg%2F11b6gpcf0y?entry=ttu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gold get-directions-btn"
+              >
+                <FaMapMarkerAlt /> Get Directions
+              </a>
             </div>
           </div>
         </div>
