@@ -7,24 +7,24 @@
 }
 
 :root {
-  --primary-black: #0a0a0a;
-  --secondary-black: #141414;
-  --deep-black: #000000;
+  --primary-black: #0f1419;
+  --secondary-black: #1a1f26;
+  --deep-black: #080b0f;
   --gold: #d4af37;
   --light-gold: #f4d03f;
   --dark-gold: #b8941f;
-  --dark-gray: #1a1a1a;
-  --medium-gray: #2a2a2a;
-  --light-gray: #3a3a3a;
-  --accent-dark: #1e1e1e;
-  --accent-darker: #0d0d0d;
-  --border-dark: #252525;
+  --dark-gray: #1e2329;
+  --medium-gray: #2a3139;
+  --light-gray: #3a4149;
+  --accent-dark: #151a20;
+  --accent-darker: #0d1015;
+  --border-dark: #252b32;
   --text-gold: #e6c66d;
   --glow-gold: #ffd966;
-  --glass-bg: rgba(20, 20, 20, 0.3);
-  --glass-border: rgba(212, 175, 55, 0.3);
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.18);
   --text-white: #ffffff;
-  --text-gray: #b0b0b0;
+  --text-gray: #a8b2bc;
 }
 
 body {
@@ -49,8 +49,9 @@ body::before {
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.02) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+    radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(100, 120, 180, 0.04) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
@@ -64,10 +65,10 @@ body::after {
   width: 100%;
   height: 100%;
   background-image: 
-    repeating-linear-gradient(0deg, transparent, transparent 99px, rgba(212, 175, 55, 0.12) 99px, rgba(212, 175, 55, 0.12) 100px),
-    repeating-linear-gradient(90deg, transparent, transparent 99px, rgba(212, 175, 55, 0.12) 99px, rgba(212, 175, 55, 0.12) 100px),
-    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(212, 175, 55, 0.04) 19px, rgba(212, 175, 55, 0.04) 20px),
-    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(212, 175, 55, 0.04) 19px, rgba(212, 175, 55, 0.04) 20px);
+    repeating-linear-gradient(0deg, transparent, transparent 99px, rgba(212, 175, 55, 0.06) 99px, rgba(212, 175, 55, 0.06) 100px),
+    repeating-linear-gradient(90deg, transparent, transparent 99px, rgba(212, 175, 55, 0.06) 99px, rgba(212, 175, 55, 0.06) 100px),
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255, 255, 255, 0.02) 19px, rgba(255, 255, 255, 0.02) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255, 255, 255, 0.02) 19px, rgba(255, 255, 255, 0.02) 20px);
   pointer-events: none;
   z-index: 0;
   opacity: 1;
@@ -100,11 +101,14 @@ a {
 
 /* Glassmorphic Elements */
 .glass {
-  background: rgba(15, 15, 15, 0.4);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border: 1px solid rgba(212, 175, 55, 0.15);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 2px 8px rgba(212, 175, 55, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
 }
 
 .glass-hover {
@@ -112,9 +116,12 @@ a {
 }
 
 .glass-hover:hover {
-  background: rgba(20, 20, 20, 0.6);
-  border-color: rgba(212, 175, 55, 0.3);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 4px 16px rgba(212, 175, 55, 0.25),
+    inset 0 1px 2px rgba(255, 255, 255, 0.12);
   transform: translateY(-2px);
 }
 
@@ -165,7 +172,7 @@ a {
     var(--dark-gold) 50%, 
     var(--gold) 100%
   );
-  border-radius: 6px;
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
@@ -274,6 +281,7 @@ a {
   color: var(--deep-black);
   padding: 14px 32px;
   border: none;
+  border-radius: 16px;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 900;
   font-style: italic;
@@ -284,7 +292,7 @@ a {
   letter-spacing: 0.5px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
 }
 
 .btn-gold::before {
@@ -293,7 +301,7 @@ a {
 
 .btn-gold:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.5);
   background: linear-gradient(135deg, var(--light-gold) 0%, var(--gold) 100%);
 }
 
@@ -302,6 +310,7 @@ a {
   color: var(--gold);
   padding: 12px 30px;
   border: 2px solid var(--gold);
+  border-radius: 16px;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 900;
   font-style: italic;
@@ -327,7 +336,7 @@ a {
   background: var(--gold);
   border-color: var(--gold);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.4);
 }
 
 .btn-outline-gold span {
