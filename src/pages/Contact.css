@@ -218,10 +218,29 @@
   padding: 15px 20px;
   background: rgba(76, 175, 80, 0.2);
   border: 1px solid rgba(76, 175, 80, 0.4);
+  border-radius: 12px;
   color: #4caf50;
   margin-bottom: 20px;
   text-align: center;
   font-weight: 600;
+  animation: fadeIn 0.3s ease;
+}
+
+.form-error {
+  padding: 15px 20px;
+  background: rgba(244, 67, 54, 0.2);
+  border: 1px solid rgba(244, 67, 54, 0.4);
+  border-radius: 12px;
+  color: #f44336;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+  animation: fadeIn 0.3s ease;
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* Map Section */

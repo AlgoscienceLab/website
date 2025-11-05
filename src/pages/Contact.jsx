@@ -5,6 +5,17 @@ import './Contact.css';
 const Contact = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Check if form was successfully submitted (redirect from FormSubmit)
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+      setFormStatus('success');
+      // Clear the URL parameter after 5 seconds
+      setTimeout(() => {
+        window.history.replaceState({}, document.title, window.location.pathname);
+        setFormStatus('');
+      }, 5000);
+    }
   }, []);
 
   const [formData, setFormData] = useState({
@@ -16,6 +27,7 @@ const Contact = () => {
   });
 
   const [formStatus, setFormStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -24,19 +36,20 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormStatus('success');
-    setTimeout(() => {
-      setFormStatus('');
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        subject: '',
-        message: ''
-      });
-    }, 3000);
+    setIsSubmitting(true);
+    setFormStatus('');
+
+    try {
+      // FormSubmit.co will handle the actual submission
+      // The form will automatically redirect after submission
+      // No additional code needed as the form action handles it
+      setFormStatus('success');
+    } catch (error) {
+      setFormStatus('error');
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -127,7 +140,17 @@ const Contact = () => {
               </div>
             </div>
 
-            <form className="contact-form glass fade-in-up" onSubmit={handleSubmit}>
+            <form 
+              className="contact-form glass fade-in-up" 
+              action="https://formsubmit.co/shahrearhossain@gmail.com"
+              method="POST"
+            >
+              {/* FormSubmit.co Configuration */}
+              <input type="hidden" name="_subject" value="New Contact Form Submission - Algo Science Lab" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_next" value={`${window.location.origin}/contact?success=true`} />
+              
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="name">
@@ -208,8 +231,14 @@ const Contact = () => {
                 </div>
               )}
 
-              <button type="submit" className="btn-gold submit-btn">
-                <FaPaperPlane /> Send Message
+              {formStatus === 'error' && (
+                <div className="form-error">
+                  ✗ Something went wrong. Please try again.
+                </div>
+              )}
+
+              <button type="submit" className="btn-gold submit-btn" disabled={isSubmitting}>
+                <FaPaperPlane /> {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
