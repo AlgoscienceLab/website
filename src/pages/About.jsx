@@ -259,16 +259,21 @@ const About = () => {
               Milestones in our semiconductor design evolution
             </p>
           </div>
-          <div className="timeline">
+          
+          <div className="timeline-container">
+            <div className="timeline-line"></div>
             {milestones.map((milestone, index) => (
               <div
                 key={index}
-                className="timeline-item glass glass-hover fade-in-up"
+                className="timeline-item fade-in-up"
                 style={{ animationDelay: `${index * 0.15}s` }}
               >
-                <div className="timeline-marker"></div>
+                <div className="timeline-node"></div>
                 <div className="timeline-content">
-                  <div className="timeline-year gold-text">{milestone.year}</div>
+                  <div className="timeline-date">
+                    <FaClock />
+                    {milestone.year}
+                  </div>
                   <h3 className="timeline-title">{milestone.title}</h3>
                   <p className="timeline-description">{milestone.description}</p>
                 </div>
