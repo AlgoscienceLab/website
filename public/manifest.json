@@ -1,0 +1,43 @@
+{
+  "name": "Algo Science Lab - Semiconductor Design",
+  "short_name": "Algo Science",
+  "description": "Leading semiconductor design startup in Bangladesh offering RTL to GDSII, IC design, and Cadence Virtuoso services",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#d4af37",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "technology",
+    "business",
+    "education"
+  ],
+  "screenshots": [
+    {
+      "src": "/capture_251104_214240.png",
+      "sizes": "1920x1080",
+      "type": "image/png"
+    }
+  ],
+  "prefer_related_applications": false
+}
