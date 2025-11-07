@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   FaRocket, FaLightbulb, FaCog, FaUsers, FaChartLine, FaCode, FaArrowRight,
@@ -10,20 +10,14 @@ import {
 import './Home.css';
 
 const Home = () => {
-  const [isPlaying, setIsPlaying] = useState(true);
-  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const toggleVideo = () => {
-    if (videoRef.current) {
-      const iframe = videoRef.current;
-      const message = isPlaying ? '{"event":"command","func":"pauseVideo","args":""}' : '{"event":"command","func":"playVideo","args":""}';
-      iframe.contentWindow.postMessage(message, '*');
-      setIsPlaying(!isPlaying);
-    }
+    setIsPlaying(!isPlaying);
   };
 
   const features = [
@@ -125,70 +119,131 @@ const Home = () => {
         ))}
       </div>
 
-      {/* YouTube Video Section */}
-      <section className="video-section">
-        <div className="container">
-          <div className="video-header fade-in">
-            <div className="video-title-badge">
-              <span className="pulse-dot"></span>
-              Featured Video
-            </div>
-            <h2 className="video-title">
-              Welcome to <span className="rainbow-gradient">Algo Science Lab</span>
-            </h2>
-          </div>
-          
-          <div className="video-container glass-premium fade-in-up">
-            <div className="video-decorations">
-              <div className="corner-decoration top-left"></div>
-              <div className="corner-decoration top-right"></div>
-              <div className="corner-decoration bottom-left"></div>
-              <div className="corner-decoration bottom-right"></div>
-            </div>
-            
-            <div className="video-wrapper">
-              <iframe
-                ref={videoRef}
-                src="https://www.youtube.com/embed/MeuUuesTd60?autoplay=1&mute=1&loop=1&playlist=MeuUuesTd60&enablejsapi=1"
-                title="Algo Science Lab Introduction"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-              
-              <button className="play-pause-button" onClick={toggleVideo}>
-                <div className="button-glow"></div>
-                <div className="button-inner">
-                  {isPlaying ? <FaPause /> : <FaPlay />}
-                </div>
-                <div className="button-ring"></div>
-                <div className="button-particles">
-                  {[...Array(12)].map((_, i) => (
-                    <span key={i} className="particle-dot" style={{
-                      transform: `rotate(${i * 30}deg) translateY(-40px)`
-                    }}></span>
-                  ))}
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Hero Section */}
+      {/* Hero Section with Video */}
       <section className="hero">
         <div className="hero-bg"></div>
+        <div className="particles-bg">
+          {[...Array(8)].map((_, i) => (
+            <div key={i} className="floating-particle" style={{
+              left: `${10 + i * 12}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${8 + i * 2}s`
+            }}></div>
+          ))}
+        </div>
+        
         <div className="container">
           <div className="hero-content fade-in-up">
-            <h1 className="hero-title">
-              <span className="rainbow-text">Algo Science Lab</span>
-              <br />
+            <div className="hero-badge">
+              <span className="badge-pulse"></span>
               Semiconductor Design Excellence
+            </div>
+            
+            <h1 className="hero-title">
+              Welcome to <span className="rainbow-gradient">Algo Science Lab</span>
             </h1>
+            
             <p className="hero-description">
               Leading semiconductor design agency specializing in Cadence Virtuoso, RTL to GDSII flows, 
               and advanced IC package design. From concept to tape-out, we deliver silicon success.
             </p>
+
+            {/* Video Thumbnail Section */}
+            <div className="hero-video-section">
+              <div className="video-stellar-container">
+                {/* Animated Border Lines */}
+                <div className="border-animation">
+                  <span className="border-line border-top"></span>
+                  <span className="border-line border-right"></span>
+                  <span className="border-line border-bottom"></span>
+                  <span className="border-line border-left"></span>
+                </div>
+                
+                {/* Floating Sparkles */}
+                <div className="sparkles-container">
+                  {[...Array(12)].map((_, i) => (
+                    <span key={i} className="sparkle" style={{
+                      left: `${5 + i * 8}%`,
+                      top: `${10 + (i % 4) * 25}%`,
+                      animationDelay: `${i * 0.3}s`,
+                      animationDuration: `${2 + (i % 3)}s`
+                    }}></span>
+                  ))}
+                </div>
+                
+                <div className="video-thumbnail-container">
+                  <div className="video-glow-effect"></div>
+                  <div className="video-aurora-effect"></div>
+                  
+                  <div className="video-frame">
+                    <img 
+                      src="https://img.youtube.com/vi/MeuUuesTd60/hqdefault.jpg"
+                      alt="Algo Science Lab Introduction"
+                      className="video-thumbnail"
+                      onError={(e) => {
+                        e.target.src = "https://img.youtube.com/vi/MeuUuesTd60/0.jpg";
+                      }}
+                    />
+                    <div className="video-overlay-gradient"></div>
+                    <div className="video-shine-effect"></div>
+                    
+                    <button className="hero-play-button" onClick={toggleVideo}>
+                      {/* Multiple Glow Layers */}
+                      <div className="play-glow-outer"></div>
+                      <div className="play-glow-middle"></div>
+                      <div className="play-glow-inner"></div>
+                      
+                      {/* Main Button Core */}
+                      <div className="play-button-core">
+                        <div className="core-gradient"></div>
+                        <div className="play-icon-wrapper">
+                          {isPlaying ? <FaPause /> : <FaPlay />}
+                        </div>
+                      </div>
+                      
+                      {/* Animated Rings */}
+                      <div className="play-ring-outer"></div>
+                      <div className="play-ring-middle"></div>
+                      <div className="play-ring-inner"></div>
+                      
+                      {/* Orbiting Particles */}
+                      <div className="orbit-particles">
+                        {[...Array(20)].map((_, i) => (
+                          <span key={i} className="orbit-dot" style={{
+                            transform: `rotate(${i * 18}deg) translateY(-65px)`,
+                            animationDelay: `${i * 0.05}s`
+                          }}></span>
+                        ))}
+                      </div>
+                      
+                      {/* Energy Waves */}
+                      <div className="energy-waves">
+                        <span className="wave wave-1"></span>
+                        <span className="wave wave-2"></span>
+                        <span className="wave wave-3"></span>
+                      </div>
+                    </button>
+                    
+                    {/* Enhanced Corner Accents */}
+                    <div className="video-corners">
+                      <span className="corner corner-tl">
+                        <i className="corner-dot"></i>
+                      </span>
+                      <span className="corner corner-tr">
+                        <i className="corner-dot"></i>
+                      </span>
+                      <span className="corner corner-bl">
+                        <i className="corner-dot"></i>
+                      </span>
+                      <span className="corner corner-br">
+                        <i className="corner-dot"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="hero-buttons">
               <Link to="/about" className="btn-gold">
                 Explore More <FaArrowRight />
@@ -199,9 +254,26 @@ const Home = () => {
             </div>
           </div>
         </div>
+        
         <div className="scroll-indicator">
           <div className="mouse"></div>
         </div>
+
+        {/* Video Player Modal */}
+        {isPlaying && (
+          <div className="video-player-modal" onClick={() => setIsPlaying(false)}>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+              <button className="close-modal" onClick={() => setIsPlaying(false)}>×</button>
+              <iframe
+                src="https://www.youtube.com/embed/MeuUuesTd60?autoplay=1&rel=0&modestbranding=1&vq=hd1080&controls=1"
+                title="Algo Science Lab Introduction"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Features Section */}
