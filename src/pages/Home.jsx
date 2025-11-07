@@ -1,17 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   FaRocket, FaLightbulb, FaCog, FaUsers, FaChartLine, FaCode, FaArrowRight,
   FaMicrochip, FaServer, FaLaptopCode, FaGraduationCap, FaAward, FaStar,
   FaCheckCircle, FaHeadset, FaClock, FaGlobe, FaMemory, FaProjectDiagram,
-  FaCube, FaDrawPolygon, FaSitemap, FaLayerGroup, FaMicroscope, FaIndustry
+  FaCube, FaDrawPolygon, FaSitemap, FaLayerGroup, FaMicroscope, FaIndustry,
+  FaPlay, FaPause
 } from 'react-icons/fa';
 import './Home.css';
 
 const Home = () => {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = useRef(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const toggleVideo = () => {
+    if (videoRef.current) {
+      const iframe = videoRef.current;
+      const message = isPlaying ? '{"event":"command","func":"pauseVideo","args":""}' : '{"event":"command","func":"playVideo","args":""}';
+      iframe.contentWindow.postMessage(message, '*');
+      setIsPlaying(!isPlaying);
+    }
+  };
 
   const features = [
     {
@@ -112,14 +125,61 @@ const Home = () => {
         ))}
       </div>
 
+      {/* YouTube Video Section */}
+      <section className="video-section">
+        <div className="container">
+          <div className="video-header fade-in">
+            <div className="video-title-badge">
+              <span className="pulse-dot"></span>
+              Featured Video
+            </div>
+            <h2 className="video-title">
+              Welcome to <span className="rainbow-gradient">Algo Science Lab</span>
+            </h2>
+          </div>
+          
+          <div className="video-container glass-premium fade-in-up">
+            <div className="video-decorations">
+              <div className="corner-decoration top-left"></div>
+              <div className="corner-decoration top-right"></div>
+              <div className="corner-decoration bottom-left"></div>
+              <div className="corner-decoration bottom-right"></div>
+            </div>
+            
+            <div className="video-wrapper">
+              <iframe
+                ref={videoRef}
+                src="https://www.youtube.com/embed/MeuUuesTd60?autoplay=1&mute=1&loop=1&playlist=MeuUuesTd60&enablejsapi=1"
+                title="Algo Science Lab Introduction"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+              
+              <button className="play-pause-button" onClick={toggleVideo}>
+                <div className="button-glow"></div>
+                <div className="button-inner">
+                  {isPlaying ? <FaPause /> : <FaPlay />}
+                </div>
+                <div className="button-ring"></div>
+                <div className="button-particles">
+                  {[...Array(12)].map((_, i) => (
+                    <span key={i} className="particle-dot" style={{
+                      transform: `rotate(${i * 30}deg) translateY(-40px)`
+                    }}></span>
+                  ))}
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-bg"></div>
         <div className="container">
           <div className="hero-content fade-in-up">
-            <div className="hero-badge glass">
-              <FaRocket /> Welcome to the Future
-            </div>
             <h1 className="hero-title">
               <span className="rainbow-text">Algo Science Lab</span>
               <br />
