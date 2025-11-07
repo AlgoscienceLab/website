@@ -10,7 +10,7 @@ const About = () => {
   const expertise = [
     {
       icon: <FaMicrochip />,
-      title: 'SoC Architecture',
+      title: 'SoC  Architecture',
       description: 'Complete System-on-Chip design from specification to implementation with multi-core CPU, peripherals, and bus architecture',
       technologies: ['AXI', 'AHB', 'APB', 'Multi-Core']
     },
